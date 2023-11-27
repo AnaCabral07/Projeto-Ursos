@@ -121,6 +121,43 @@ if (qtdFemeas > 0)
     
 }
 
+Console.WriteLine($"\nUrso mais pesado: {maiorPeso} ({sexoMaiorPeso})");
+Console.WriteLine($"Pesos médios: \n\tMachos = {mediaPesoMachos:N1}\n\tFêmeas = {mediaPesoFemeas:N1}\n\tGeral  = {mediaPeso:N1}\n");
+
+Console.WriteLine("Categoria       Ursos    Ursos (%)    Machos   Machos (%)    Fêmeas  Fêmeas (%)");
+Console.WriteLine("".PadLeft(79, '-'));
+Console.WriteLine($"{"ML",-10} {qtdML,10} {percentualML,10:N1}% {qtdMachosML,10} {percentualMachosML,10:N1}% {qtdFemeasML,10} {percentualFemeasML,10:N1}%");
+Console.WriteLine($"{"L",-10} {qtdL,10} {percentualL,10:N1}% {qtdMachosL,10} {percentualMachosL,10:N1}% {qtdFemeasL,10} {percentualFemeasL,10:N1}%");
+Console.WriteLine($"{"M",-10} {qtdM,10} {percentualM,10:N1}% {qtdMachosM,10} {percentualMachosM,10:N1}% {qtdFemeasM,10} {percentualFemeasM,10:N1}%");
+Console.WriteLine($"{"P",-10} {qtdP,10} {percentualP,10:N1}% {qtdMachosP,10} {percentualMachosP,10:N1}% {qtdFemeasP,10} {percentualFemeasP,10:N1}%");
+Console.WriteLine($"{"MP",-10} {qtdMP,10} {percentualMP,10:N1}% {qtdMachosMP,10} {percentualMachosMP,10:N1}% {qtdFemeasMP,10} {percentualFemeasMP,10:N1}%");
+Console.WriteLine("".PadLeft(79, '-'));
+Console.WriteLine($"{"Total",-10} {qtd,10} {100,10}% {qtdMachos,10} {percentualMachos,10:N1}% {qtdFemeas,10} {percentualFemeas,10:N1}%");
+
+Console.WriteLine("\n----- Ursos Machos -----");
+Console.WriteLine("   +...10...20...30...40...50...60...70...80...90..100");
+Console.WriteLine($"ML |{"".PadRight((int)percentualMachosML / 2, '*')}");
+Console.WriteLine($"L  |{"".PadRight((int)percentualMachosL / 2, '*')}");
+Console.WriteLine($"M  |{"".PadRight((int)percentualMachosM / 2, '*')}");
+Console.WriteLine($"P  |{"".PadRight((int)percentualMachosP / 2, '*')}");
+Console.WriteLine($"MP |{"".PadRight((int)percentualMachosMP / 2, '*')}");
+
+Console.WriteLine("\n----- Ursos Femeas -----");
+Console.WriteLine("   +...10...20...30...40...50...60...70...80...90..100");
+Console.WriteLine($"ML |{"".PadRight((int)percentualFemeasML / 2, '*')}");
+Console.WriteLine($"L  |{"".PadRight((int)percentualFemeasL / 2, '*')}");
+Console.WriteLine($"M  |{"".PadRight((int)percentualFemeasM / 2, '*')}");
+Console.WriteLine($"P  |{"".PadRight((int)percentualFemeasP / 2, '*')}");
+Console.WriteLine($"MP |{"".PadRight((int)percentualFemeasMP / 2, '*')}");
+
+Console.WriteLine("\n----- Ursos (todos) -----");
+Console.WriteLine("   +...10...20...30...40...50...60...70...80...90..100");
+Console.WriteLine($"ML |{"".PadRight((int)percentualML / 2, '*')}");
+Console.WriteLine($"L  |{"".PadRight((int)percentualL / 2, '*')}");
+Console.WriteLine($"M  |{"".PadRight((int)percentualM / 2, '*')}");
+Console.WriteLine($"P  |{"".PadRight((int)percentualP / 2, '*')}");
+Console.WriteLine($"MP |{"".PadRight((int)percentualMP / 2, '*')}");
+
 
 
 
