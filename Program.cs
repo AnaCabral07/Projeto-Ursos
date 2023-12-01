@@ -79,6 +79,13 @@ if (tecla != null && tecla.ToUpper() == "S")
 {
     break;  // Sai do loop se a tecla for 'S'
 }
+
+  if (peso > MaiorP)
+    {
+        MaiorP = peso;
+        SexoMP = sexo;
+    }
+
 }
 
 if (qtdUrsos == 0) return;
