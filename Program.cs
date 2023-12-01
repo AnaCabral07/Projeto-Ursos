@@ -1,24 +1,13 @@
-﻿Console.WriteLine("           Ursos sem Curso");
-// Console.WriteLine();
-Console.WriteLine("Digite S para sair, ou qualquer outra tecla para continuar!");
+﻿Console.WriteLine("                   Ursos");
+Console.WriteLine("Digite S para sair, ou Enter para continuar!");
 
-string sexo;
-double peso;
+string sexo = "";
+double peso = 0;
 
-int qtdUrsos = 0, qtdFemeas = 0, qtdMachos;
-
-// qML = quantidade muito leve
-// qL = quantidade leve 
-// qM = quantidade médio
-// qP = quantidade pesado
-// qMP = quantidade muito pesado
-
-// qMLm = quantidade muito leve macho...
-
-// qMLf = quantidade muito leve fêmea...
+int qtdUrsos = 0, qtdFemeas = 0, qtdMachos = 0;
 
 int qML = 0, qL = 0, qM = 0, qP = 0, qMP = 0;
-int qMLm = 0, qLm = 0, qMm = 0, qPm = qMPm = 0;
+int qMLm = 0, qLm = 0, qMm = 0, qPm = 0, qMPm = 0;
 int qMLf = 0, qLf = 0, qMf = 0, qPf = 0, qMPf = 0;
 
 double percentualML = 0, percentualL = 0, percentualM = 0, percentualP = 0, percentualMP = 0;
@@ -29,52 +18,67 @@ string SexoMP = "";
 double MaiorP = 0;
 
 double somaPesos = 0, somaPesosMachos = 0, somaPesosFemeas = 0;
-double mediaPeso = 0, mediaPesoMachos = 0, mediaPesoFemeas = 0; 
+double mediaPeso, mediaPesoMachos = 0, mediaPesoFemeas = 0; 
 
-string tecla = "S";
-while(tecla != "S" );
+string tecla = "";
+while (tecla != "S")
 {
-    Console.WriteLine($"\n    Urso #{qtdUrsos ++}");
+    Console.WriteLine($"\n     Urso {qtdUrsos + 1}");
 
     Console.Write("Peso (até 250kg): ");
     peso = Convert.ToDouble(Console.ReadLine());
 
-    if (peso <= 0 || peso > 250) break;
+    if (peso <= 0 || peso > 250)
+{
+    Console.WriteLine("Por favor, insira um peso válido (entre 1 e 250).");
+}
+else
+{
+    Console.Write("Sexo (M/F): ");
+    sexo = Console.ReadLine()?.Trim().ToUpper() ?? "";
 
-    Console.Write("Sexo, macho ou fêmea: ");
-    sexo = Console.ReadLine()!.Trim().Substring(0, 1).ToUpper();
-
-    if (sexo != "macho" && sexo != "fêmea") break;
-
-    qtdUrsos++;
-
-    switch (sexo)
+    if (sexo == "M" || sexo == "F")
     {
-        case "macho": qtdMachos++; somaPM += peso; break;
-        case "fêmea": qtdFêmeas++; somaPF += peso; break;
+        qtdUrsos++;
+
+        switch (sexo)
+        {
+            case "M":
+                qtdMachos++;
+                somaPesosMachos += peso;
+
+                if (peso <= 50) qMLm++;
+                else if (peso <= 100) qLm++;
+                else if (peso <= 150) qMm++;
+                else if (peso <= 200) qPm++;
+                else if (peso <= 250) qMPm++;
+
+                break;
+
+            case "F":
+                qtdFemeas++;
+                somaPesosFemeas += peso;
+                if (peso <= 50) qMLf++;
+                else if (peso <= 100) qLf++;
+                else if (peso <= 150) qMf++;
+                else if (peso <= 200) qPf++;
+                else if (peso <= 250) qMPf++;
+
+                break;
+        }
     }
-
-
-    tecla = Console.ReadLine()!;
+    else
+    {
+        Console.WriteLine("Por favor, insira 'M' para macho ou 'F' para fêmea.");
+    }
 }
 
-if (peso <= 50 && sexo == "macho") qMLm++;
-{   else 
-    else if (peso <= 100 && sexo == "macho") qLm++;
-    else if (peso <= 150 && sexo == "macho") qMm++;
-    else if (peso <= 200 && sexo == "macho") qPm++;
-    else if (peso <= 250 && sexo == "macho") qMPm++;
-    else if (peso <= 50 && sexo == "fêmea") qMLf++;
-    else if (peso <= 100 && sexo == "fêmea") qLf++;
-    else if (peso <= 150 && sexo == "fêmea") qMf++;
-    else if (peso <= 200 && sexo == "fêmea") qPf++;
-    else if (peso <= 250 && sexo == "fêmea") qMPf++;
-
-    if (peso > MaiorP)
-    {
-    MaiorP = peso;
-    SexoMP = sexo;
-    }
+    Console.Write("Digite S para sair, ou Enter para continuar: ");
+    tecla = Console.ReadLine() ?? "";
+if (tecla != null && tecla.ToUpper() == "S") 
+{
+    break;  // Sai do loop se a tecla for 'S'
+}
 }
 
 if (qtdUrsos == 0) return;
@@ -96,15 +100,15 @@ percentualFemeas = (double)qtdFemeas / qtdUrsos * 100;
 
 somaPesos = somaPesosMachos + somaPesosFemeas;
 
-mediaPeso =  somaPesos / qtdUrsos;
+mediaPeso = somaPesos / qtdUrsos;
 
 if (qtdMachos > 0)
 {
-    percentualMLm = (double) qMLm / qtdMachos * 100;
-    percentualLm = (double) qLm / qtdMachos * 100;
-    percentualMm = (double) qMm / qtdMachos * 100;
-    percentualPm = (double) qPm / qtdMachos * 100;
-    percentualMPm = (double) qMPm / qtdMachos * 100;
+    percentualMLm = (double)qMLm / qtdMachos * 100;
+    percentualLm = (double)qLm / qtdMachos * 100;
+    percentualMm = (double)qMm / qtdMachos * 100;
+    percentualPm = (double)qPm / qtdMachos * 100;
+    percentualMPm = (double)qMPm / qtdMachos * 100;
 
     mediaPesoMachos = somaPesosMachos / qtdMachos;
 
@@ -112,14 +116,13 @@ if (qtdMachos > 0)
 
 if (qtdFemeas > 0)
 {
-    percentualMLf = (double) qMLf / qtdFemeas * 100;
-    percentualLf = (double) qLf / qtdFemeas  * 100;
-    percentualMf = (double) qMf / qtdFemeas  * 100;
-    percentualPf = (double) qPf / qtdFemeas  * 100;
-    percentualMPf = (double) qMPf / qtdFemeas  * 100;
+    percentualMLf = (double)qMLf / qtdFemeas * 100;
+    percentualLf = (double)qLf / qtdFemeas * 100;
+    percentualMf = (double)qMf / qtdFemeas * 100;
+    percentualPf = (double)qPf / qtdFemeas * 100;
+    percentualMPf = (double)qMPf / qtdFemeas * 100;
 
-    mediaPesoFemeas = somaPesosFemeas / qtdFemeas ;
-    
+    mediaPesoFemeas = somaPesosFemeas / qtdFemeas;
 }
 
 Console.WriteLine($"\nUrso mais pesado: {MaiorP} ({SexoMP})");
@@ -158,6 +161,7 @@ Console.WriteLine($"L  |{"".PadRight((int)percentualL / 2, '*')}");
 Console.WriteLine($"M  |{"".PadRight((int)percentualM / 2, '*')}");
 Console.WriteLine($"P  |{"".PadRight((int)percentualP / 2, '*')}");
 Console.WriteLine($"MP |{"".PadRight((int)percentualMP / 2, '*')}");
+
 
 
 
