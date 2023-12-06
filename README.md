@@ -5,4 +5,4 @@ Faça um programa para análise de dados coletados de ursos selvagens.  Para cad
 
 Para executar:
 
-* `dotnet teste-aulas-publicacao.dll`
+* `dotnet Projeto-Ursos.dll`
