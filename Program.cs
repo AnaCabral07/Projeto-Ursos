@@ -77,7 +77,7 @@ else
     tecla = Console.ReadLine() ?? "";
 if (tecla != null && tecla.ToUpper() == "S") 
 {
-    break;  // Sai do loop se a tecla for 'S'
+    // break;  // Sai do loop se a tecla for 'S'
 }
 
   if (peso > MaiorP)
